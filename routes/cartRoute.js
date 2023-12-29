@@ -81,6 +81,31 @@ console.log(channelid);
     }
 });
 
+router.get('/newagoratoken', (req, res) => {
+    try {
+        const channelid = req.params.channelid;
+console.log(channelid);
+        const uid = 0;
+        const role = RtcRole.PUBLISHER;
+
+        const expirationTimeInSeconds = 6600;
+
+        // Generate the token
+        const key = RtcTokenBuilder.buildTokenWithUid(
+            APP_ID,
+            APP_CERTIFICATE,
+            channelid,
+            uid,
+            role,
+            expirationTimeInSeconds
+        );
+
+        res.status(200).json({ token: key });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 
