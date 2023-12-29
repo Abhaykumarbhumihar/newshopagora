@@ -83,7 +83,7 @@ console.log(channelid);
 
 router.get('/newagoratoken', (req, res) => {
     try {
-        const channelid = req.params.channelid;
+        const channelid = req.query.channelid;
 console.log(channelid);
         const uid = 0;
         const role = RtcRole.PUBLISHER;
